@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+
+import Input from '../Input'
+import Button from '../Button'
+
 import "./TodoList.scss";
 
 
@@ -8,18 +12,23 @@ class TodoList extends Component {
         super(props)
     }
     render(){
+        
         return (
             <div className="todo__list__container container-lg">
-              <ul>
-              {this.props.items.map((el)=> 
-                    <li key={el.id}>
-                    <input type="checkbox" id={el.id}  value={el.value}/>
-                    <span for={el.value}> {el.value}</span>
-                    </li>
-                            )
-                        }
-                    
-              </ul>
+                <ul> 
+                {this.props.list.map(item =>{
+                    return(
+                        <li key={item.id} id={item.id}>
+                            <input type="checkbox"/>
+                            <span>{item.value}</span>
+                            <Button 
+                            value="X"
+                            onClick={this.deleteTodo(item.id)}
+                            />
+                        </li>
+                    )
+                })}
+                </ul>
             </div>
         )
     }
