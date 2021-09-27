@@ -14,21 +14,24 @@ class Input extends Component {
         this.setState({
             [e.target.key]: e.target.value
         })
+        console.log(e.target.value)
     }
     addNewTodo = ()=>{
         console.log("hola")
-        const newTodo = {
+        
+        let newTodo = {
             id: Math.floor(Math.random()),
             value: this.state.newTodo
         }
-        const list = [...this.props.list]
+        let list = [...this.props.list]
         
         list.push(newTodo)
 
         this.setState({
-            list,
-            newTodo: ''
+            newTodo: '',
+            list
         })
+        console.log(list)
 
     }
     render(){
